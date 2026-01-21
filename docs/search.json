@@ -2,22 +2,8 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "web",
+    "title": "McNulty Bio 381",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nSo this will be hw 1!\nHomework 1"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "Homework1.html",
-    "href": "Homework1.html",
-    "title": "Homework1",
-    "section": "",
-    "text": "This is homework 1 and will have some r script in it"
+    "text": "This webpage is for Homework for the course Computational Biology 6100.\nHomework Links\nHomework 1\nHomework 2"
   }
 ]

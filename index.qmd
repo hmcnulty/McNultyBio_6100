@@ -2,11 +2,11 @@
 title: "McNulty Bio 381"
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+**Homework/Labwork**
 
 
-So this will be hw 1!
+[Homework 1](Homework_01.qmd)
 
-[Homework 1](Homework1.html)
+
+[Homework 2](Homework_02.qmd)

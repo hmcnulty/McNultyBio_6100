@@ -10,7 +10,7 @@ This webpage is for Homework for the course Computational Biology 6100.
 **Homework Links**
 
 
-[Homework 1](Homework_01.qmd)
+[Homework 1](Homework_01.html)
 
 
-[Homework 2](Homework_02.qmd)
+[Homework 2](Homework_02.html)

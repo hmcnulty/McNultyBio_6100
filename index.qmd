@@ -18,3 +18,6 @@ This webpage is for the homework of Computational Biology 6100.
 
 
 [Homework 3](Homework_03.html)
+
+
+[Homework 4](Homework_04.html)

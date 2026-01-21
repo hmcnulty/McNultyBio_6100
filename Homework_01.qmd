@@ -5,4 +5,3 @@ format: html
 
 This is homework 1 and will have some r script in it
 
-```{r}

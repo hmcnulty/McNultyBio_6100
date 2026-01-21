@@ -3,3 +3,4 @@ title: "Homework_06"
 format: html
 ---
 
+This is for eventual hw

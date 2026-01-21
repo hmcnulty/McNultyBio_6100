@@ -2,7 +2,9 @@
 title: "McNulty Bio 381"
 ---
 
-This webpage is for Homework for the course Computational Biology 6100. 
+This webpage is for the homework of Computational Biology 6100. 
+
+:)
 
 
 

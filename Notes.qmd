@@ -3,3 +3,6 @@ title: "Notes"
 format: html
 ---
 
+## Class Notes
+
+[Notes January 22nd](Notes_jan22.html)

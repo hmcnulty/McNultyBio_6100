@@ -146,3 +146,26 @@ z + y
 x <- c(1, 2)
 
 z + x # this recycled so 10+1= 11 and then 20+2=22, BUT there is no other number so it does the 1 again 30+1=31
+
+
+
+##########################################
+# Atomic Vectors Part 2!
+
+z <- vector(mode = "numeric", length = 0) # create an empty vector, specify mode & length
+print(z)
+
+#dynamic creation, very inefficient in R
+#adding elements, added 5 as a number
+z <- c(z, 5)
+z
+
+
+
+#creating a vector with a predefined length, rep function
+
+z <- rep(0, 100)
+length(z) #checking length
+
+
+

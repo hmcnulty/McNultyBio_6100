@@ -163,9 +163,115 @@ z
 
 
 #creating a vector with a predefined length, rep function
-
 z <- rep(0, 100)
 length(z) #checking length
+
+#create an empty vector
+z <- rep(NA, 100)
+z
+typeof(z) #logical, when you make it full of NAs
+
+
+z[1] <- "Vermont"
+head(z)
+
+typeof(z)
+
+
+#creating vectors with lots of names
+my_vector <- runif(100) #give 100 random valuez from 0-1
+my_names <- paste("Species", seq(1:Length(my_vector)), sep = "") #could also do seq(1:100), but not as goos if going to chnage the data later
+#were creating "Species" 1-100, the seq function outlines the starting and the stopping positiion (going to give integers 1-100), sep with no space
+
+print(my_names)
+
+names(my_vector) <- my_names  #assigning the names to the vectors
+head(my_vector) # showing the fist few in the file
+
+str(my_vector) #structure function
+
+
+
+#using the rep function
+
+rep(0.5, 6) #can do this but below is better
+rep(x=0.5, times = 6)
+
+my_vec <- c(1, 2, 3)
+
+#repeat a vector
+rep(x = my_vec, times = 2, each = 2)
+
+#sequencing a vector
+seq(from = 2, to = 4)
+2:4 #shorthand for above^
+
+x <- seq(from = 2, to = 4, length = 7) #will equally space to make 7 values
+
+
+
+
+my_vec <- 1:length(x) # common in other languages, slow in R
+
+#IN R better to use
+seq_along(my_vec)
+
+
+#generating random vectors
+
+runif(5) # gives us 5 values from 0-1
+
+# making it generate the SAME RANDOM NUMBER sequence every time
+runif(n=3, min=100, max = 101)
+
+set.seed(123) #have to hit set.seed everytime!!!
+
+runif(n=1, min=0, max = 1)
+
+
+
+#now for normal distributions
+out <- rnorm(n = 500, mean = 100, sd = 30) #creating a normal disctribution and ranomly sampling 500 times
+hist(out)
+
+
+#random sampling
+long_vec <- seq_len(10) #10 long
+
+sample(x = long_vec) #will shufflt vector
+
+sample(x = long_vec, size = 100, replace = TRUE) #size is how many to take out randomly, if replace = true when we draw a card out we put it back in before thr next draw and have the osibilioty to get it again
+#if we want the same ones drawn everytime we would need to set.seed
+
+
+
+#weighted sampling from a vector, adding weights 
+weights <- c(rep(20, 5), rep(100, 5))
+
+sample(x = long_vec, replace = TRUE, prob = weights)
+
+
+
+#################### Subsetting Vectors
+
+z <- c(3.1, 9.2, 1.3, 0.4, 7.5)
+
+z[1] #indexing, gives value in the 1 position
+
+z[c(2,3)] #slicing and putting the 2nd and third vectors together
+
+# a negative sign excludes a number z[-c(2,3)] would remove 2 and 3
+
+#using logicals
+z[z<3] #selects only the ones that are true for the statement
+
+
+
+
+
+
+
+
 
 
 

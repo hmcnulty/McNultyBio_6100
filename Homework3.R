@@ -5,6 +5,84 @@
 #######################################################
 
 
+set.seed(10)
+
+# Question #1
+# Suppose x = 1.1, a = 2.2, and b = 3.3. Assign each expression to the value of the variable z and print the value stored in z.
+
+#assign variables
+x <- 1.1
+a <- 2.2
+b <- 3.3
+
+#A
+z <- x^a^b  # = 3.61714
+print(z)
+
+#B
+z <- (x^a)^b  # = 1.997611
+print(z)
+
+#C
+z <- (3*x^3) + (2*x^2) + 1  # = 7.413
+print(z)
+
+
+# Question 2
+# Using the rep and seq functions, create the following vectors
+
+#A (1,2,3,4,5,6,7,8,7,6,5,4,3,2,1)
+
+a <- rep(1:8, times = 1) # create 1-8
+
+b <- rep(7:1, times = 1) # create 7-1
+
+my_vec <- c(a, b) #combine both vectors together
+print(my_vec)
+
+#B (1,2,2,3,3,3,4,4,4,4,5,5,5,5,5) COULD DO THIS BETTER
+
+a <- rep(1, times = 1)
+b <- rep(2, times = 2)
+c <- rep(3, times = 3)
+d <- rep(4, times = 4)
+e <- rep(5, times = 5)
+
+my_vec <- c(a, b, c, d, e)
+print(my_vec)
+
+
+#C  (5,4,4,3,3,3,2,2,2,2,1,1,1,1,1)
+
+a <- rep(5, times = 1)
+b <- rep(4, times = 2)
+c <- rep(3, times = 3)
+d <- rep(2, times = 4)
+e <- rep(1, times = 5)
+
+my_vec <- c(a, b, c, d, e)
+print(my_vec)
+
+#Question 3
+# Create a vector of two random uniform numbers. 
+# In a spatial map, these can be interpreted as x and y coordinates that give the location of an individual (such as a marked forest tree in a plot that has been mapped). 
+# Using one of R’s inverse trigonometry functions (asin(), acos(), or atan()), convert these numbers into polar coordinates (If you don’t know what polar coordinates are, read about them on the web here, here, or in your calculus textbook)
+
+#two random uniform numbers
+set.seed(10)
+cord <- c(runif(2)) # generate two random numbers w/ seed set 
+cord
+
+x <- cord[1] # assing first value in cord to x
+y <- cord[2] # assign second value in cord to y
+
+#r = sqrt(x^2 + y^2)
+#arctan(y/x) = theta
+
+r <- sqrt(x^2 + y^2) # calculate r coordinates and assign to variable r
+theta <- atan(y/x) # calculate theta coord and assign to variable theta
+polarcor <- c(r, theta) # concatinate r and theta variables and assign to polarcor
+print(polarcor) 
 
 
 
@@ -12,4 +90,52 @@
 
 
 
+# Question 4
+# Create a vector queue <- c("sheep", "fox", "owl", "ant") where queue represents the animals that are lined up to enter Noah’s Ark, 
+# with the sheep at the front of the line. Using R expressions, update queue as
+
+queue <- c("sheep", "fox", "owl", "ant")
+
+#a - the serpent arrives and gets in line
+a <- c(queue, "serpent")
+a
+
+#b - the sheep enters the ark
+b <- a[-1]
+b
+
+#c - the donkey arrives and talks his way to the front of the line
+c <- c("donkey", b )
+c
+
+#d - the serpent gets impatient and leaves
+d <- c[-5]
+d
+
+#e - the owl gets bored and leaves
+e <- d[-3]
+e
+
+#f - the aphid arrives and the ant invites him to cut in line
+fa <- e[c(1,2)]
+fa
+fb <- e[3]
+fb
+f <- c(fa, "aphid", fb)
+f
+
+#g - Finally, determine the position of the aphid in the line
+which(f == "aphid")
+
+
+# Question 5
+# Use R to create a vector of all of the integers from 1 to 100 
+# that are not divisible by 2, 3, or 7. 
+# You will need one of the arithmetic operators on this cheat sheet
+
+x <- 1:100
+x
+
+y <- x[!(x%%2==0 | x%%3==0 | x%%7==0)]
+y
 

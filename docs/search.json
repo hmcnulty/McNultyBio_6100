@@ -102,7 +102,7 @@
     "href": "Homework_03.html#question-3",
     "title": "Homework_03",
     "section": "Question 3",
-    "text": "Question 3\n\n#two random uniform numbers"
+    "text": "Question 3\n\n#two random uniform numbers\nset.seed(10)\ncord &lt;- c(runif(2)) # generate two random numbers w/ seed set \ncord\n\n[1] 0.5074782 0.3067685\n\nx &lt;- cord[1] # assing first value in cord to x\ny &lt;- cord[2] # assign second value in cord to y\n\n#r = sqrt(x^2 + y^2)\n#arctan(y/x) = theta\n\nr &lt;- sqrt(x^2 + y^2) # calculate r coordinates and assign to variable r\ntheta &lt;- atan(y/x) # calculate theta coord and assign to variable theta\npolarcor &lt;- c(r, theta) # concatinate r and theta variables and assign to polarcor\nprint(polarcor)\n\n[1] 0.5929933 0.5437188"
   },
   {
     "objectID": "Homework_03.html#question-4",

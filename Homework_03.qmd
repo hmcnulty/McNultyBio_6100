@@ -67,6 +67,20 @@ print(my_vec)
 ```{r}
 
 #two random uniform numbers
+set.seed(10)
+cord <- c(runif(2)) # generate two random numbers w/ seed set 
+cord
+
+x <- cord[1] # assing first value in cord to x
+y <- cord[2] # assign second value in cord to y
+
+#r = sqrt(x^2 + y^2)
+#arctan(y/x) = theta
+
+r <- sqrt(x^2 + y^2) # calculate r coordinates and assign to variable r
+theta <- atan(y/x) # calculate theta coord and assign to variable theta
+polarcor <- c(r, theta) # concatinate r and theta variables and assign to polarcor
+print(polarcor)
 
 
 

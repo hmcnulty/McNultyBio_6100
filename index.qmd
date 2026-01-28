@@ -29,4 +29,3 @@ This webpage is for the homework of Computational Biology 6100.
 [Homework 6](Homework_06.html)
 
 
-[Notes January 22nd](Notes_jan22.html)

@@ -138,7 +138,7 @@ which(f == "aphid")
 x <- 1:100 # make a vector 1-100 and name
 x
 
-y <- x[!(x%%2==0 | x%%3==0 | x%%7==0)] # use ! to exclude any thing that can be divided by 2, 3, or 7 and name
+y <- x[!(x%%2==0 | x%%3==0 | x%%7==0)] # use ! to exclude anything that can be divided by 2, 3, or 7 and name
 y
 
 ```

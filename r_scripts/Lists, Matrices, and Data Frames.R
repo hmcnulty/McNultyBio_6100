@@ -178,3 +178,114 @@ data<-read.csv("/Users/hannahmcnulty/Documents/github/McNultyBio_6100/my_datafra
 data$var_a
 
 
+
+# Distinctions between data frames and Mad Dims
+
+z_mat <- matrix(data = 1:30, ncol = 3, byrow = T) #make a matriz
+
+z_dataframe <- as.data.frame(z_mat) # turn into a datafram
+
+str(z_mat)
+str(z_dataframe)
+
+head(z_mat) # head function is easy for diagnostics
+head(z_dataframe)
+
+# element refrencing
+
+z_mat[1,1]
+
+z_dataframe$V2[2] #correct way for a datafram
+
+#column referencing
+
+z_dataframe$V1
+
+z_dataframe[,3]
+z_mat[,3]
+
+# big different between matricies and dfs
+#one dimension
+z_mat[2] # gives the second number
+z_dataframe[2] # gives the entire second vector
+
+# missing data in dfs and matricies
+zd <- runif(10)
+zd[c(5,7)] <- NA
+zd
+
+#complete cases
+complete.cases(zd) #when its there true when its not false
+
+#filer out for only true response values
+zd[complete.cases(zd)]
+
+#which positions have the NA
+which(complete.cases(zd))
+which(!complete.cases(zd)) #not complete cases
+
+#missing data in a matrix
+m <- matrix(1:20, nrow = 5)
+#add missing data
+m[1,1] <- NA
+m[5,4] <- NA
+m[c(1,4), c(1,5)] <- NA # same thing but do it in one line
+m
+
+m[complete.cases(m),] # rows with complete cases, have to have the , after to keep it demensionality
+
+#now getting complete cases for only certain columns
+m[complete.cases(m[,c(1,2)]),] #drops first row b/c it has a NA
+m[complete.cases(m[,c(2,3)]),] #no drops
+m[complete.cases(m[,c(3,4)]),] #drops row 4
+m[complete.cases(m[,c(1,4)]),] #drops 1 and 4
+
+
+#Subsetting matrix and data frames
+m <- matrix(1:12, nrow = 3)
+m
+dimnames(m) <- list(paste("Species", LETTERS[1:nrow(m)], sep = ""),paste("Site", 1:ncol(m)), sep = "")
+
+#element-wise subsetting
+m[1:2, 3:4]
+m[c("SpeciesA", "SpeciesB"),c("Site3", "Site4")]
+m[1:2,]
+m[,3:4]
+
+#using logicals in subsetting 
+#greaterthan 
+sums <- colSums(m) > 15
+colSums(m) >= 15
+colSums(m) < 15
+
+sums[sums > 15]
+sums[colSums(m) > 15] #actually shows you the numbers
+
+
+m[rowSums(m) == 22]
+m[rowSums(m) == 22,]
+m[!rowSums(m) == 22,] #opposite
+
+m[,"Site1"] <3
+
+
+# data curation
+my_data <- read.table(file = "data/testData.csv",
+header = TRUE,
+sep = ",",
+comment.char = "#")
+
+head(my_data)
+
+#writing out an r object as an rds file = creating a frozen copy of what we were doing in this session
+
+z_dataframe # r object
+
+z_dataframe
+
+saveRDS(z_dataframe, file = "data/zData.RDS") #RDS suffix is not required but good to put
+
+#using the RDS reader
+unfrozen_z <- readRDS("data/zData.RDS")
+
+

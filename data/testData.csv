@@ -1,0 +1,9 @@
+#,,,
+ID,VarOne,VarTwo,VarThree
+1,A,1,0.43
+2,B,2,0.27
+3,C,6,0.93
+# Can insert comments throughout text to add notes for individual data rows,,,
+,,,
+,,,
+# ----- END OF DATA -----,,,

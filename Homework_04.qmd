@@ -119,6 +119,7 @@ which(!complete.cases(df))
 # re-order the entire data frame to arrange the second variable in alphabetical order
 
 df2 <- df[order(df$my_letters2, decreasing = TRUE), ]
+df2
 
 
 # calculate the column mean for the first variable.

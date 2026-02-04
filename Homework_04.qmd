@@ -19,7 +19,7 @@ n_dims3 <- sample(n_dims2)
 n_dims3
 
 # create a square matrix with these elements.
-matrix <- matrix(data = n_dims2, nrow = n_dims, ncol = n_dims)
+matrix <- matrix(data = n_dims3, nrow = n_dims, ncol = n_dims)
 
 # print out the matrix.
 print(matrix)

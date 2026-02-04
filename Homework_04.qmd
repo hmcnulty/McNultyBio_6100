@@ -80,3 +80,36 @@ typeof(new_list)
 
 
 ```
+
+
+##Question 3
+
+```{r}
+# Create a data frame with the two variables (= columns) and 26 cases (= rows) below:
+
+# call the first variable my_unis and fill it with 26 random uniform values from 0 to 10
+my_unis <- runif(1:26, min = 0, max = 10)
+
+# call the second variable my_letters and fill it with 26 capital letters in random order.
+my_letters2 <- sample(LETTERS)
+
+df <- data.frame(my_unis, my_letters2)
+
+# for the first variable, use a single line of code in R to select 4 random rows and replace the numerical values in those rows with NA.
+to_replace<- sample(1:nrow(df), 4, replace = FALSE)
+df$my_unis[to_replace] <- NA
+
+
+# for the first variable, write a single line of R code to identify which rows have the missing values.
+which(!complete.cases(df))
+
+# re-order the entire data frame to arrange the second variable in alphabetical order
+
+df2 <- df[order(df$my_letters2, decreasing = TRUE), ]
+
+
+# calculate the column mean for the first variable.
+mean(df2$my_unis, na.rm = T)
+
+
+```

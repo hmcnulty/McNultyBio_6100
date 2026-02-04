@@ -1,0 +1,107 @@
+# Script for Homework #4
+# 02/04/2026
+# Hannah Grace McNulty
+
+#######################################################
+
+# Question #1
+# Assign to the variable n_dims a single random integer between 3 and 10.
+n_dims <- sample(3:10, size = 1)
+
+# Create a vector of consecutive integers from 1 to n_dims^2
+n_dims2 <- 1:n_dims^2
+
+# Use the sample function to randomly reshuffle these values.
+n_dims3 <- sample(n_dims2)
+
+# create a square matrix with these elements.
+matrix <- matrix(data = n_dims3, nrow = n_dims3, ncol = n_dims3)
+
+# print out the matrix.
+print(matrix)
+
+# find a function in r to transpose the matrix.
+t_matrix <- t(matrix)
+
+# print it out again and note how it has changed.
+print(t_matrix)
+# The matrix had now flipped on a diagonal axis.
+
+# calculate the sum and the mean of the elements in the first row and then the last row.
+c(sum(t_matrix[1,]), mean(t_matrix[1,]), sum(t_matrix[n_dims,]), mean(t_matrix[n_dims,]))
+
+# read about the eigen() function and use it on your matrix
+eigen(t_matrix, only.values = FALSE)
+
+# look carefully at the elements of $values and $vectors in the output. What kind of numbers are these?
+# These numbers are integers.
+
+# dig in with the typeof() function to figure out their type.
+typeof(t_matrix["$values"])
+typeof(t_matrix["$vectors"])
+
+
+# if have set your code up properly, you should be able to re-run it and create a matrix of different size because n_dims will change.
+
+
+# Question 2
+# Create a list with the following named elements:
+# my_matrix, which is a 4 x 4 matrix filled with random uniform values
+# my_logical which is a 100-element vector of TRUE or FALSE values. Do this efficiently by setting up a vector of random values and then applying an inequality to it
+# my_letters, which is a 26-element vector of all the lower-case letters in random order.
+
+my_matrix <- matrix(runif(16), nrow = 4, ncol = 4)
+
+my_logical <- runif(100, min = 0, max = 100)
+my_logical <- my_logical<30
+
+my_letters <- letters[1:26]
+my_letters_r <- sample(my_letters)
+
+# create a new list, which has the element[2,2] from the matrix, the second element of the logical vector, and the second element of the letters vector.
+list <- list(my_matrix[2,2], my_logical[2], my_letters_r[2])
+
+# use the typeof() function to confirm the underlying data types of each component in this list
+typeof(list[[1]])
+typeof(list[[2]])
+typeof(list[[3]])
+
+# combine the underlying elements from the new list into a single atomic vector with the c() function.
+new_list <- c(my_matrix[2,2], my_logical[2], my_letters_r[2])
+
+# what is the data type of this vector?
+typeof(new_list)
+
+# Question 3
+# Create a data frame with the two variables (= columns) and 26 cases (= rows) below:
+df <- data.frame(my_unis, my_letters2)
+
+
+# call the first variable my_unis and fill it with 26 random uniform values from 0 to 10
+my_unis <- runif(1:26, min = 0, max = 10)
+
+# call the second variable my_letters and fill it with 26 capital letters in random order.
+my_letters2 <- sample(LETTERS)
+
+# for the first variable, use a single line of code in R to select 4 random rows and replace the numerical values in those rows with NA.
+to_replace<- sample(1:nrow(df), 4, replace = FALSE)
+df$my_unis[to_replace] <- NA
+
+
+# for the first variable, write a single line of R code to identify which rows have the missing values.
+which(!complete.cases(df))
+
+# re-order the entire data frame to arrange the second variable in alphabetical order
+
+df2 <- df[order(df$my_letters2, decreasing = TRUE), ]
+
+
+# calculate the column mean for the first variable.
+mean(df2$my_unis, na.rm = T)
+
+
+
+
+
+
+

@@ -39,6 +39,8 @@ my_function <- function(N0 = 10, r = 0.1, K = 200, tf = 100, ts = 1){
 
 my_df <- my_function() #name the data frame to save to the environment
 
+my_df
+
 ```
 
 

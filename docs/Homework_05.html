@@ -209,28 +209,138 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="re">END</span><span class="co"> OF FUNCTION</span></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">my_function</span>() <span class="co">#name the data frame to save to the environment</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">my_function</span>() <span class="co">#name the data frame to save to the environment</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>my_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      t         n
+1     1  10.99387
+2     2  12.08023
+3     3  13.26641
+4     4  14.56003
+5     5  15.96901
+6     6  17.50147
+7     7  19.16568
+8     8  20.96995
+9     9  22.92255
+10   10  25.03154
+11   11  27.30465
+12   12  29.74908
+13   13  32.37133
+14   14  35.17696
+15   15  38.17038
+16   16  41.35462
+17   17  44.73108
+18   18  48.29927
+19   19  52.05668
+20   20  55.99848
+21   21  60.11748
+22   22  64.40395
+23   23  68.84563
+24   24  73.42776
+25   25  78.13317
+26   26  82.94252
+27   27  87.83454
+28   28  92.78639
+29   29  97.77405
+30   30 102.77282
+31   31 107.75777
+32   32 112.70422
+33   33 117.58828
+34   34 122.38726
+35   35 127.08008
+36   36 131.64763
+37   37 136.07300
+38   38 140.34169
+39   39 144.44172
+40   40 148.36366
+41   41 152.10054
+42   42 155.64784
+43   43 159.00324
+44   44 162.16650
+45   45 165.13919
+46   46 167.92452
+47   47 170.52701
+48   48 172.95236
+49   49 175.20715
+50   50 177.29864
+51   51 179.23460
+52   52 181.02314
+53   53 182.67252
+54   54 184.19107
+55   55 185.58703
+56   56 186.86851
+57   57 188.04340
+58   58 189.11929
+59   59 190.10346
+60   60 191.00285
+61   61 191.82402
+62   62 192.57315
+63   63 193.25606
+64   64 193.87817
+65   65 194.44454
+66   66 194.95987
+67   67 195.42853
+68   68 195.85453
+69   69 196.24160
+70   70 196.59316
+71   71 196.91235
+72   72 197.20206
+73   73 197.46493
+74   74 197.70340
+75   75 197.91967
+76   76 198.11577
+77   77 198.29354
+78   78 198.45467
+79   79 198.60070
+80   80 198.73301
+81   81 198.85289
+82   82 198.96148
+83   83 199.05984
+84   84 199.14893
+85   85 199.22960
+86   86 199.30266
+87   87 199.36881
+88   88 199.42870
+89   89 199.48292
+90   90 199.53201
+91   91 199.57645
+92   92 199.61668
+93   93 199.65309
+94   94 199.68605
+95   95 199.71589
+96   96 199.74289
+97   97 199.76733
+98   98 199.78944
+99   99 199.80946
+100 100 199.82758</code></pre>
+</div>
 </div>
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question #2</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a second function that takes the above dataframe as its input and creates a plot of population size over time as a side effect.</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">df =</span> my_df){</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> t,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> n)) <span class="sc">+</span> <span class="co">#define axis</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co">#scatter plot, and size of point</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Time (year)"</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Population Size"</span>) <span class="sc">+</span> <span class="co">#rename the axis</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.02</span>,<span class="fl">0.02</span>)) <span class="sc">+</span> <span class="co">#fix scale on both axis</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.02</span>,<span class="fl">0.02</span>))</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a second function that takes the above dataframe as its input and creates a plot of population size over time as a side effect.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># START OF FUNCTION</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################################</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">df =</span> my_df){</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> t,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> n)) <span class="sc">+</span> <span class="co">#define axis</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co">#scatter plot, and size of point</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Time (year)"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Population Size"</span>) <span class="sc">+</span> <span class="co">#rename the axis</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.02</span>,<span class="fl">0.02</span>)) <span class="sc">+</span> <span class="co">#fix scale on both axis</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.02</span>,<span class="fl">0.02</span>))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################################</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="re">END</span><span class="co"> OF FUNCTION</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

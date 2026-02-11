@@ -4,4 +4,51 @@
 
 #######################################################
 
+library(ggplot2)
+library(magrittr) #%>%
+# Question 1
+# Create a funtion that takes the parameters required to run a logistic growth model and returns a dataframe with columns for population size and time
+
+# START OF FUNCTION
+###########################################################################
+
+my_function <- function(N0 = 5, r = 0.5, K = 75, tf = 100, ts = 1){
+  # FUNCTION: my_function
+  # PURPOSE: Run a logistic growth model and return a dataframe with columns for population size and time.
+  # INPUTS: No: initial population size, r: growth rate, K: carrying capacity, tfinal: end time, ts: time step 
+  # OUTPUTS: dataframe of Population size over Time
+
+  t <- seq(from = 1, to = tf, by = ts) #from year 1-100, by 1 = as defined in the function header
+
+  e <- 2.7182 #constant doesn't change, find the name
+
+  n <-  K/(1+((K-N0)/N0)*e^(-r*t)) #equation to find n
+
+  df <- data.frame(t, n) #combine variables n and t into a data frame
+
+  return(df)
+
+}
+
+my_df <- my_function() #name the data frame to save to the environment
+
+
+# Question 2
+# Create a second function that takes the above dataframe as its input and creates a plot of population size over time as a side effect.
+plot <- function(df = my_df){
+df %>% 
+  ggplot(aes(x = t,
+             y = n)) + #define axis
+  geom_point(size = 1) + #scatter plot, and size of point
+  labs(
+    x = "Time (year)",
+    y = "Population Size") + #rename the axis
+  theme_classic() + 
+  scale_y_continuous(limits = c(0,80), expand = c(0.02,0.02)) + #fix scale on both axis
+  scale_x_continuous(limits = c(0,100), expand = c(0.02,0.02))
+  
+}
+
+plot()
+
 

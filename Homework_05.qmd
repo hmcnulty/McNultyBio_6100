@@ -51,6 +51,10 @@ my_df
 # START OF FUNCTION
 ########################################################################
 plot <- function(df = my_df){
+    # FUNCTION: plot()
+    # PURPOSE: Make a scatter plot of my_df a logistic growth model
+    # INPUTS: my_df: t = time, n = population size
+    # OUTPUTS: scatterplot of Population Size over Time
 df %>% 
   ggplot(aes(x = t,
              y = n)) + #define axis

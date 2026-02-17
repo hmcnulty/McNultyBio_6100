@@ -123,6 +123,145 @@ head(growth_df)
 
 plot(x = growth_df$r, y = growth_df$N)
 
+#####################################################
+# 2D parameter sweep for log growth function
+# outputs matrix
+
+# vectors for r and K  parameters
+r_values <- seq(0,1, length_out = 100)
+K_values <- seq(10,1000, length.out = 100)
 
 
+
+growth_sweep <- function(rvec, kvec){
+  #storage function
+  stor_mat <- matrix(NA, nrow = length(rvec), ncol = length(kvec))
+
+  for (i in seq_along(rvec)){ #rows
+    for (j in seq_along(kvec)){ #cols
+
+      #run long growth
+      tmp_df <- my_function(r = rvec[i], K = kvec[j])
+
+      #store max n in 2d matrix
+      stor_mat[i,j] <- max(tmp_df$population)
+    }
+  }
+  return(stor_mat)
+}
+
+
+# run growth param sweep
+growth_mat <- growth_sweep(rvec = r_values, kvec = K_values)
+
+
+#####################################################
+# 2D parameter sweep for log growth function
+# outputs a data frame
+
+# vectors for r and K  parameters
+r_values <- seq(0,1, length_out = 100)
+K_values <- seq(10,1000, length.out = 100)
+
+
+
+growth_sweep <- function(rvec, kvec){
+  #row indexing variable
+  counter <- 1
+  
+  #create storage dataframe
+  dflength <- length(rvec)* length(kvec) #how long is the df
+  r_out <- rep(NA, dflength)
+  k_out <- rep(NA, dflength)
+  maxn_out <- rep(NA, dflength)
+
+  # turn vecs to df
+  storage_df <- data.frame(r_out, k_out, maxn_out)
+
+  # enther out loops
+  for (i in seq_along(rvec)){ #rows
+    for (j in seq_along(kvec)){ #cols
+
+      #run long growth
+      tmp_df <- my_function(r = rvec[i], K = kvec[j])
+
+      #store max n in dataframe
+        storage_df$maxn_out[counter] <- max(tmp_df$population)
+        storage_df$r_out[counter] <- rvec[i] # value for r stored
+        storage_df$k_out[counter] <- kvec[j] # value for k stores
+      counter <- counter+1 # increase counter
+    }
+  }
+  return(storage_df)
+}
+
+# run growth param sweep
+df <- growth_sweep(rvec = r_values, kvec = K_values)
+head(df)
+
+
+
+
+# create a random walk function
+
+############################################
+# NAME: ran_walk
+# purpose: conduct a random walk
+# input: times = number of timesteps
+#        n1 = inital pop size
+#        lamda = finite rate of increase
+#        noise_sd = 10
+# output: vector n with population size > 0 until extinction
+#
+library(ggplot2)
+
+ran_walk <- function(times = 100, n1 = 50, lamda = 1, noise_sd = 10){
+  n <- rep(NA, times) # create out output vec : storage container!!
+  n[1] <- n1 # initalize init pop size
+  noise <- rnorm(n = 100, mean = 0, sd = noise_sd) # created noise/error
+
+  for (i in 1:times-1){ # have to do times-1 b/c we gave it a starting value
+      n[i + 1] <- lamda*n[i] + noise[i] # we already have something in i so we have to give it i+1 to go to the second place
+      if(n[i +1] <= 0){
+        n[i+1] <- NA
+        cat("Population Extinction at Time", i+1, "\n")
+        break
+      }
+  }
+
+  return(n) # after the loop but before the function closes
+
+}
+
+
+ran_walk1 <- function(times=100,n1=50,lamda=1.00,noise_sd=10) {
+                n <- rep(NA,times)  # create output vector
+                n[1] <- n1 # initialize with starting population size
+                noise <- rnorm(n=times,mean=0,sd=noise_sd) # create noise vector
+                for(i in 1:(times-1)) {
+                  n[i + 1] <- lamda*n[i] + noise[i]
+                  if(n[i + 1] <=0) {
+                    n[i + 1] <- NA
+                    cat("Population extinction at time",i+1,"\n")
+                    break}
+                }
+
+return(n)
+}
+
+
+x <- ran_walk1()
+x
+
+#plotting with default values
+qplot(x=1:100, y=ran_walk1(), geom= "line")
+
+#no noise/not so random walk
+qplot(x=1:100, y=ran_walk1(noise_sd = 0), geom= "line")
+
+# no noise and adjust lamda
+qplot(x=1:100, y=ran_walk1(lamda = 0.92, noise_sd = 0), geom= "line")
+
+# add some stoch back make lamda >1
+qplot(x=1:100, y=ran_walk1(lamda = 1.01, noise_sd = 6), geom= "line")
 

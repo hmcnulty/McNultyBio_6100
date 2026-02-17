@@ -202,6 +202,7 @@ head(df)
 # HOW TO DO THE HEATMAP!!!!!!!!!!!!!!!!
 ggplot(data = df, aes(x = r_out, y = k_out, fill = maxn_out)) +
   geom_tile()
+#look on stack exchange for other color scalings, the blue is bad
 
 
 

@@ -199,6 +199,9 @@ growth_sweep <- function(rvec, kvec){
 df <- growth_sweep(rvec = r_values, kvec = K_values)
 head(df)
 
+# HOW TO DO THE HEATMAP!!!!!!!!!!!!!!!!
+ggplot(data = df, aes(x = r_out, y = k_out, fill = maxn_out)) +
+  geom_tile()
 
 
 

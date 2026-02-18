@@ -13,18 +13,6 @@
 library(deSolve)
 
 
-
-
- # create storage dataframe
-  #df_length <- length(beta)*length(gamma) 
-  #beta <- rep(NA, df_length)
-  #gamma <- rep(NA, df_length)
-
-
-
-
-
-
 ############################################################
 # FUNCTION: run_sir_model
 # PURPOSE: Solve deterministic SIR model with deSolve
@@ -87,7 +75,7 @@ infected <- function(beta = seq(from = 0, to = 0.5, by = 0.01), gamma = seq(from
     counter <- 1
 
   # create storage dataframe
-    dfLength <- length(beta)*length(gamma) # how long is DF
+    dfLength <- length(beta)*length(gamma) 
     b_out <- rep(NA, dfLength)
     g_out <- rep(NA, dfLength)
     maxi_out <- rep(NA, dfLength)
@@ -99,10 +87,10 @@ infected <- function(beta = seq(from = 0, to = 0.5, by = 0.01), gamma = seq(from
   for (i in seq_along(beta)){ # rows
     for (j in seq_along(gamma)){ # cols
 
-      # run log growth
+      # run sir model
       tmp_df <- run_sir_model(beta = beta[i], gamma = gamma[j])
 
-      # store max n in dataframe
+      # store max I in dataframe
       storageDF$maxi_out[counter] <- max(tmp_df$I)
       storageDF$b_out[counter] <- beta[i] # value for beta stored
       storageDF$g_out[counter] <- gamma[j] # value for gamma stored
@@ -116,4 +104,29 @@ return(storageDF)
   
 
 
-infected()
+max_i <- infected()
+
+
+
+# Question 2
+
+library(ggplot2)
+library(magrittr)
+
+
+heat_map <- function(data = max_i){
+
+  plot <- max_i %>% 
+    ggplot(aes(x = b_out,
+             y = g_out,
+            fill = maxi_out)) + #define axis
+    geom_tile()+ #scatter plot, and size of point
+    labs(
+        x = "Beta",
+        y = "Gamma") + #rename the axis
+    theme_classic()
+  
+  return(plot)
+}
+
+heat_map()

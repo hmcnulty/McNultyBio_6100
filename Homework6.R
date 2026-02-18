@@ -1,12 +1,28 @@
----
-title: "Homework_06"
-format: html
----
+# Script for Homework #6
+# 02/18/2026
+# Hannah Grace McNulty
 
-## Question 1
+#######################################################
 
-```{r}
+
+
+
+# Question 1
+
+
 library(deSolve)
+
+
+
+
+ # create storage dataframe
+  #df_length <- length(beta)*length(gamma) 
+  #beta <- rep(NA, df_length)
+  #gamma <- rep(NA, df_length)
+
+
+
+
 
 
 ############################################################
@@ -57,7 +73,13 @@ run_sir_model <- function(
   as.data.frame(out)
 }
 
-sir_model <- run_sir_model()
+run_sir_model()
+
+
+
+
+
+
 
 
 infected <- function(beta = seq(from = 0, to = 0.5, by = 0.01), gamma = seq(from = 0, to = 0.5, by = 0.01)){
@@ -65,7 +87,7 @@ infected <- function(beta = seq(from = 0, to = 0.5, by = 0.01), gamma = seq(from
     counter <- 1
 
   # create storage dataframe
-    dfLength <- length(beta)*length(gamma) 
+    dfLength <- length(beta)*length(gamma) # how long is DF
     b_out <- rep(NA, dfLength)
     g_out <- rep(NA, dfLength)
     maxi_out <- rep(NA, dfLength)
@@ -77,10 +99,10 @@ infected <- function(beta = seq(from = 0, to = 0.5, by = 0.01), gamma = seq(from
   for (i in seq_along(beta)){ # rows
     for (j in seq_along(gamma)){ # cols
 
-      # run sir model
+      # run log growth
       tmp_df <- run_sir_model(beta = beta[i], gamma = gamma[j])
 
-      # store max I in dataframe
+      # store max n in dataframe
       storageDF$maxi_out[counter] <- max(tmp_df$I)
       storageDF$b_out[counter] <- beta[i] # value for beta stored
       storageDF$g_out[counter] <- gamma[j] # value for gamma stored
@@ -92,35 +114,6 @@ infected <- function(beta = seq(from = 0, to = 0.5, by = 0.01), gamma = seq(from
 return(storageDF)
 }  
   
-max_i <- infected()
 
 
-```
-
-
-## Question 2
-
-```{r}
-
-library(ggplot2)
-library(magrittr)
-
-
-heat_map <- function(data = max_i){
-
-  plot <- max_i %>% 
-    ggplot(aes(x = b_out,
-             y = g_out,
-            fill = maxi_out)) + #define axis
-    geom_tile()+ #scatter plot, and size of point
-    labs(
-        x = "Beta",
-        y = "Gamma") + #rename the axis
-    theme_classic()
-  
-  return(plot)
-}
-
-heat_map()
-
-```
+infected()

@@ -1,3 +1,8 @@
+# ggplot
+# february 24th, 2026
+# Hannah Grace McNulty
+
+
 
 
 p1 <- ggplot(data= <DATA>) +
@@ -169,3 +174,88 @@ font_import()  # Imports all system fonts (run once)
    ylim(-10,40) +
    theme_bw(base_size=25,base_family="Monaco")
  print(p1)
+
+
+# multi panel plots
+library(ggthemes)
+library(patchwork)
+
+g1 <- ggplot(data = d) +
+  aes(x = displ, 
+      y = cty) +
+    geom_point() +
+    geom_smooth()
+
+g2 <- ggplot(data = d) +
+  aes(x = fl) +
+    geom_bar(fill = "tomato", color = "black") 
+
+g3 <- ggplot(data = d) +
+  aes(x = displ) +
+  geom_histogram(fill = "royalblue", color = "black") 
+
+  
+g4 <- ggplot(data = d) +
+  aes(x = fl, y = cty, fill = fl) +
+  geom_boxplot() +
+  theme(legend.position = "none")
+
+
+g1 + g2 
+
+g1 + g2 + g3 + plot_layout(ncol = 1)
+
+
+#changing area of each plot
+g1 + g2 + plot_layout(ncol = 1, heights = c(2,1)) #2,1 means the top figure is twice the height as the bottom one
+
+g1 + g2 + plot_layout(ncol = 2, widths = c(1,2))
+
+
+# adding a spacer between plots
+g1 + plot_spacer() + g2 
+
+# nested layouts
+g1 + {
+  g2 + {
+    g3 +
+      g4 +
+      plot_layout(ncol = 1)
+  }
+} + 
+  plot_layout(ncol = 1)
+
+
+# - operator for substack placement
+g1 + g2 - g3 + plot_layout(ncol = 1)
+
+# using | and / 
+(g1 | g2 | g3) / g4 + plot_annotation("title here", caption = "made this patchwork")
+
+# adding tags
+g1 / (g2 | g3) + plot_annotation(tag_levels = "A") # A is uppercase, a, 1 for numbers
+
+#######################################
+# multi planel plots with facet
+
+m1 <- ggplot(data = d) +
+  aes(x = displ, y = cty) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# using facet_grid
+m1 + facet_grid(class ~ fl)
+m1 + facet_grid(class ~ fl, scales = "free_y") # changing the scales on the y axis. free_x for x axis
+m1 + facet_grid(class ~ fl, scales = "free") # for both axis to be free
+
+
+# facet for 1 variable
+m1 + facet_grid(.~class)
+m1 + facet_grid(class~.)
+
+# facet_wrap
+m1 + facet_wrap(~class)
+m1 + facet_wrap(~class +fl)
+m1 + facet_wrap(~class +fl, drop = F) # to include empty panels
+
+

@@ -1,0 +1,121 @@
+---
+title: "Homework_07"
+format: html
+---
+
+
+
+## Question 1
+
+```{r}
+
+data(iris)
+
+glimpse(iris)
+# Variable # = 5
+# Observation # = 150
+```
+
+## Question 2
+
+```{r}
+
+iris1 <- iris %>%
+  filter(Species=="virginica" | Species=="versicolor",Sepal.Length > 6 & Sepal.Width > 2.5)
+
+glimpse(iris1)
+# Variable # = 5
+# Observation # = 56
+```
+
+
+## Question 3
+
+```{r}
+
+iris2 <- iris1 %>%
+  select(Species, Sepal.Length, Sepal.Width)
+
+glimpse(iris2)
+# Variable # = 3
+# Observation # = 56
+```
+
+## Question 4
+
+```{r}
+
+iris3 <- iris2 %>%
+  arrange(by = desc(Sepal.Length))
+
+head(iris3, 6)
+```
+
+
+## Question 5
+
+```{r}
+
+iris4 <- iris3 %>%
+  mutate(Sepal_Area= Sepal.Length*Sepal.Width)
+
+glimpse(iris4)
+# Variables = 4
+# Observations = 56
+```
+
+
+## Question 6
+
+```{r}
+iris5 <- iris4 %>% 
+  summarize(Average_Sepal_Length=mean(Sepal.Length, totalnumber = n()),
+            Average_Sepal_Width=mean(Sepal.Width, totalnumber = n()),
+          Sample.Size = n())
+
+print(iris5)
+```
+
+## Question 7
+
+```{r}
+
+iris6 <- iris4 %>%
+  group_by(Species) %>%
+  summarize(Average_Sepal_Length=mean(Sepal.Length, totalnumber = n()),
+            Average_Sepal_Width=mean(Sepal.Width, totalnumber = n()),
+          Sample.Size = n())
+
+print(iris6)
+```
+
+## Question 8
+
+```{r}
+irisFinal <- iris %>%
+  filter(Species=="virginica" | Species=="versicolor", Sepal.Length > 6 & Sepal.Width > 2.5) %>% #Q2 iris2
+  select(Species, Sepal.Length, Sepal.Width) %>% #Q3 iris3
+  mutate(Sepal_Area= Sepal.Length*Sepal.Width) %>% #Q4 iris4
+  group_by(Species) %>%
+  summarize(Average_Sepal_Length=mean(Sepal.Length, totalnumber = n()),
+            Average_Sepal_Width=mean(Sepal.Width, totalnumber = n()),
+          Sample.Size = n()) #Q6 iris6
+```
+
+
+## Question 9
+
+```{r}
+
+
+iris_longer <- iris %>%
+  pivot_longer(cols = Sepal.Length:Petal.Width, 
+                names_to = "Measure", 
+                values_to = "Value")
+
+print(iris_longer)
+```
+
+
+
+

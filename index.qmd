@@ -28,4 +28,8 @@ This webpage is for the homework of Computational Biology 6100.
 
 [Homework 6](Homework_06.html)
 
+
 [Homework 7](Homework_07.html)
+
+
+[Homework 8](Homework_08.html)

@@ -109,7 +109,7 @@ print(sim)
 
 shuffle_data <- function() {
 
-  df_sim <- rando
+  df_sim <- randodf_sim
   
   shuffle <- df_sim$res <- sample(df_sim$res) 
 

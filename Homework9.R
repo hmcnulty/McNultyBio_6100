@@ -8,7 +8,7 @@ library(ggplot2)
 library(tidyverse)
 
 iris <- iris
-cars <- cars
+
 
 
 # Question 1
@@ -60,15 +60,12 @@ q3 <- df %>% ggplot(aes(x = Petal.Length, y = is_setosa)) +
 
 # Question 4
 
+bee_data <- read.csv("/Users/hannahmcnulty/Documents/github/McNultyBio_6100/data/bees.csv",header = T, sep=",")
 
 
 
-q4 <- iris %>% ggplot(aes(x = Petal.Length, y = is_setosa)) +
-  geom_bar() +
-  labs(
-    x = "Petal Length (cm)",
-    y = "Is Setosa Species") +
-  theme_classic() +
-  scale_y_continuous(limits = c(0,1.5), expand = c(0.02,0.02)) + #fix scale on both axis
-  scale_x_continuous(limits = c(0,8), expand = c(0.02,0.02))
+mosaicplot(~ sampling_event + bee_caste, data = bee_data, color = c("pink", "purple", "lightblue"), main = "Sampling Event and Bee Caste", xlab = "Sampling Event", ylab = "Bee Caste")
+
+
+
 

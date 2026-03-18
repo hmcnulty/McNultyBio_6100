@@ -270,6 +270,6 @@
     "href": "Homework_09.html#question-4",
     "title": "Homework_09",
     "section": "Question 4",
-    "text": "Question 4\n\n# Discrete X = Sampling Event\n# Discrete Y = Bee Caste\n\nbee_data &lt;- read.csv(\"/Users/hannahmcnulty/Documents/github/McNultyBio_6100/data/bees.csv\",header = T, sep=\",\")\n\n\n\nmosaicplot(~ sampling_event + bee_caste, data = bee_data, color = TRUE, main = \"Sampling Event and Bee Caste\", xlab = \"Sampling Event\", ylab = \"Bee Caste\")"
+    "text": "Question 4\n\n# Discrete X = Sampling Event\n# Discrete Y = Bee Caste\n\nbee_data &lt;- read.csv(\"/Users/hannahmcnulty/Documents/github/McNultyBio_6100/data/bees.csv\",header = T, sep=\",\")\n\n\n\nmosaicplot(~ sampling_event + bee_caste, data = bee_data, color = c(\"pink\", \"purple\", \"lightblue\"), main = \"Sampling Event and Bee Caste\", xlab = \"Sampling Event\", ylab = \"Bee Caste\")"
   }
 ]

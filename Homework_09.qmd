@@ -92,7 +92,7 @@ bee_data <- read.csv("/Users/hannahmcnulty/Documents/github/McNultyBio_6100/data
 
 
 
-mosaicplot(~ sampling_event + bee_caste, data = bee_data, color = TRUE, main = "Sampling Event and Bee Caste", xlab = "Sampling Event", ylab = "Bee Caste")
+mosaicplot(~ sampling_event + bee_caste, data = bee_data, color = c("pink", "purple", "lightblue"), main = "Sampling Event and Bee Caste", xlab = "Sampling Event", ylab = "Bee Caste")
 
 
 ```

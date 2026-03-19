@@ -85,3 +85,129 @@ mixed.insert(0, "start") # inserts in the specific position without overriding i
 # 
 
 
+# List Comprehension
+
+print(mixed)
+
+[x for x in mixed] # x is indexing variable 
+
+[x for x in mixed if isinstance(x,str)] # each element in mixed if its a character string
+
+###############
+# Dictionaries:
+###############
+
+#manually creating
+md = {
+    "first":"John",
+    "last":"Smith",
+    "year":2017,
+    "status":"active"
+}
+type(md) #what type
+len(md) # length of the pairs
+
+#creating with the constructor function
+md2 = dict(first = "John", last = "Smith")
+
+# Data types within a dictionary
+data_types = {
+    "string":"thing",
+    "integer":3,
+    "float":3.14342,
+    "list":[1,2,3,"a"],
+    "boolean":False
+}
+
+data_types["string"] # returns the value associated with it
+
+data_types.get("boolean") # built in method works too
+
+# return all keys and values using methods in dictionary
+data_types.keys()
+data_types.values()
+
+data_types.items() #shows pairs in a list (tuples)
+
+data_types["age"] = 36 # add an element
+
+data_types["age"] = 25 # change an element
+
+##########################
+# NUMPY
+##########################
+# creating a numpy array
+arr1 = np.array([0,1,2,3,4,5,6,7,8,9])
+arr1[3]
+arr1[-1] # last element
+arr1[:3] # beg to third element (doesnt include the third place)
+arr1[1:5] # slice in
+arr1[1:8:3] # index with a step, between 1 and 8 it will give every third element
+
+# 2D array
+arr2 = np.array([[1,2,3], [4,5,6], [7,8,9]])
+arr2[2,2]
+arr2[:,2] # all the rows for the column in the third place
+arr2[2,:] # rows
+arr2[0:2, 0:2] #subset of the array
+
+# 3D array
+arr3 = np.array([[[1,2], [3,4]], [[5,6], [7,8]]])
+
+# 3D indexing
+arr3[1,0,1]
+
+# Dimensions
+arr1.ndim
+arr2.ndim
+arr3.ndim
+
+# shape of an array
+arr1.shape
+arr2.shape
+arr3.shape
+
+arr2.dtype
+arr2.astype(str) # convert to character strings
+
+#reshaping an array
+arr1.shape
+arr1.reshape(2,5)
+
+# 3D array to 2D
+arr3.shape
+arr3.reshape(4,2)
+
+# combining arrays
+first = np.array([1,2,3])
+second = np.array([4,5,6,7,8,9])
+
+long_array = np.concatenate((first, second))
+
+#select axis for higher dims
+new_stack = np.concatenate((arr2, arr2), axis = 1) #can change the axis
+
+# stacking arrays
+new_stack2 = np.stack((arr2, arr2))
+
+# splitting arrays
+np.array_split(arr1, 2)
+np.array_split(arr1, 2, axis = 0)
+
+# random numbers
+from numpy import random
+
+random.seed(seed = 100)
+
+random.randint(50) # value from 0-50
+
+random.rand(50) # 50 values from 0-1
+
+random.rand(50, 5, 10)
+
+random.choice(arr1) # random number from array 1 (with replacement)
+
+random.choice(arr1, size = (3,3)) #pull from array 1 into a certain size matrix
+
+random.choice([0,1], p = [.3, .7], size = 100)
+

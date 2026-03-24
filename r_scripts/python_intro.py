@@ -211,3 +211,159 @@ random.choice(arr1, size = (3,3)) #pull from array 1 into a certain size matrix
 
 random.choice([0,1], p = [.3, .7], size = 100)
 
+
+################
+# distributions
+################
+
+# Normal Distribution
+x = random.normal(loc = 5, scale = 3, size = 20)
+
+plt.hist(x)
+plt.show()
+
+# Binomial Distribution
+x = random.binomial(n = 10, p = 0.5, size = 300)
+plt.hist(x)
+plt.show()
+
+# uniform distribution
+x = random.uniform(low = 1, high = 10, size = 50)
+plt.hist(x)
+plt.show()
+
+
+
+#######
+# Math between arrays
+#######
+# y - x # subtraction
+# y + x # addition
+# y / x # division
+# y * x # multiplication
+
+# x * 100 # multiply by a scalar
+
+# arr2 * arr2 # multiply two arrays
+
+# functions
+np.mean(arr2)
+np.max(arr2)
+
+########################
+# Logic Structures
+########################
+
+# if stat.
+a = 3
+
+if a >= 5:
+    print("a is greater than or equal to 5")
+# only prints if it meets the condition
+
+if a >= 5:
+    print("a is greater than or equal to 5")
+else:
+    print("a is less than 5")
+# doing both possible outcomes
+
+a = 3
+b = 3
+operation = "mult"
+
+if operation == "mult":
+    y = a * b
+elif operation == "div":
+    y = a / b
+elif operation == "add":
+    y = a + b
+elif operation == "sub":
+    y = a - b
+else:
+    y = "I dont know that operation!"        
+
+
+
+
+
+######################
+# LOOPS
+######################
+l = [10,20]
+
+for i in range(2):
+    print([l[i]])
+
+# loop on a object directly
+x = ["blue", "green", "red"]
+
+for i in x:
+    print(i)
+
+
+# more complicated loop
+rnd = random.uniform(low = 1, high = 5, size = 10)
+
+out_list = [] # creating a truely empty list
+
+arr1
+
+for i in range(len(arr1)):
+    out_list.append(rnd[i] + arr1[i])
+
+
+# nested loop woth ifelse
+rnd2D = random.uniform(low = 0, high = 1, size = (3,3))
+
+mat_out = np.empty(shape = (3,3))
+shp = rnd2D.shape
+
+
+# writing nexted loop
+for i in range(shp[0]):
+    for j in range(shp[1]):
+
+        if rnd2D[i,j] >= 0.5:
+            mat_out[i,j] = rnd2D[i,j] * 1000
+        else: 
+            mat_out[i,j] = rnd2D[i,j] / 1000
+
+
+
+########################################
+# PANDAS Dataframes
+########################################
+import pandas as pd
+
+dates = pd.date_range("20130101", periods = 6)
+
+df = pd.DataFrame(np.random.randn(6,4), index = dates, columns = list("ABCD"))
+
+# df methods
+df.head(4)
+df.tail(4)
+
+df.index # pulls the row index names
+df.columns # pulls the column names
+
+df.describe() # summary stats for each column
+
+df.to_numpy() # converts to numpy, take out all row and column names and just leaves the data
+
+# indexing into pandas
+df["A"]
+df.loc[:, ["A", "B"]]
+df["20130102":"20130104"]
+
+# read in a csv file
+
+ds = pd.read_csv("data/iris.data.csv")
+
+ds["sepal_length"] # pulling col out
+
+ds["sepal_area"] = ds.sepal_length * ds.sepal_width # creating a new column
+
+# fully numeric filter
+df[df>.5]
+
+

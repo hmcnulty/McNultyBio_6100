@@ -19,14 +19,19 @@ mixed = [1, 2, True, "blue", 5] #extra list
 list = ["blue", "green", "red", 2, 5, 8, 11, 12, True, True, False, mixed]
 
 third_element = list[2]
+print(third_element)
 
 listWithinList = list[11][2]
+print(listWithinList)
 
 list.insert(0, "Hannah") # Inserts "Hannah" in the first position without overriding the currrent element.
+print(list)
 
 list.append(100) # Adds 100 to the end and changes the object within the original file, appending the data in the list.
+print(list)
 
 list.remove(11) # Removes the number 11 from the list.
+print(list)
 
 ```
 
@@ -44,17 +49,21 @@ md = {
 }
 
 keys = md.keys()
+print(keys)
 
 values = md.values()
+print(values)
 
 md["favcolor"] = "green" # Adds an element to the bottom of the existing dictionary.
+print(md)
 
 md.items() # Prints all pairs in a list (tuples)
 
-
 md["study"] = "plants" # add a new element
+print(md)
 
 del md["year"] # delete an element
+print(md)
 ```
 
 ## Question 3
@@ -72,7 +81,8 @@ arr1.astype(float) # convert back to numeric
 arr2D = arr1.reshape(10,10) # convert to 2D array
 
 arr_bin = random.choice([0,1], p = [.2, .8], size = [10,10])
-
+print(arr_bin)
 
 stack = np.stack((arr2D, arr_bin))
+print(stack)
 ```

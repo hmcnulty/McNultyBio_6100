@@ -177,14 +177,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="e25cbd75" class="cell" data-execution_count="1">
+<div id="0e081d04" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> random</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
-<div id="d9b1462e" class="cell" data-execution_count="2">
+<div id="72a15fe3" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mixed <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="va">True</span>, <span class="st">"blue"</span>, <span class="dv">5</span>] <span class="co">#extra list</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> [<span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"red"</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="va">True</span>, <span class="va">True</span>, <span class="va">False</span>, mixed]</span>
@@ -214,7 +214,7 @@ True
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
-<div id="e32b4a58" class="cell" data-execution_count="3">
+<div id="d950c895" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>md <span class="op">=</span> {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"first"</span>:<span class="st">"Hannah"</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"last"</span>:<span class="st">"McNulty"</span>,</span>
@@ -250,7 +250,7 @@ dict_values(['Hannah', 'McNulty', 2026, 'active', 'happy'])
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
-<div id="ba370819" class="cell" data-execution_count="4">
+<div id="6a49f895" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">=</span> random.rand(<span class="dv">100</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>arr1[<span class="op">-</span><span class="dv">10</span>:] <span class="co"># will return the last 10 elements</span></span>
@@ -267,57 +267,57 @@ dict_values(['Hannah', 'McNulty', 2026, 'active', 'happy'])
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>stack <span class="op">=</span> np.stack((arr2D, arr_bin))</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stack)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[1 0 1 1 1 1 1 1 1 0]
- [1 1 1 1 1 0 1 1 1 0]
- [1 0 1 0 1 1 1 1 1 1]
- [1 1 1 1 0 1 1 1 0 1]
- [1 1 1 1 1 1 1 1 1 1]
- [1 1 1 0 1 1 0 1 1 1]
+<pre><code>[[1 0 1 1 1 0 1 1 0 1]
+ [1 0 1 1 1 0 0 1 0 0]
  [0 1 1 1 1 1 1 1 1 1]
- [1 1 1 1 1 1 0 1 0 1]
- [1 1 0 1 0 1 0 1 1 1]
- [0 1 1 0 1 1 0 1 0 1]]
-[[[0.81873759 0.18151871 0.98462174 0.71408271 0.09660704 0.85339393
-   0.41516543 0.99340385 0.47465365 0.52232315]
-  [0.05482061 0.42518257 0.38978884 0.78366425 0.63242767 0.13739808
-   0.70392279 0.49797028 0.46153776 0.71943669]
-  [0.63481943 0.39315105 0.30038312 0.17674978 0.06988228 0.72827027
-   0.3866715  0.17544222 0.1708548  0.58253463]
-  [0.33554593 0.94875001 0.18963749 0.06303516 0.13056883 0.04886844
-   0.16321109 0.06514106 0.23245381 0.901703  ]
-  [0.34000083 0.55718965 0.55846376 0.79294408 0.20992308 0.40359604
-   0.92752492 0.66134741 0.19193101 0.99940369]
-  [0.93322051 0.14609697 0.90451858 0.77220764 0.10999109 0.26709917
-   0.51647597 0.69452994 0.16146808 0.11673293]
-  [0.35339978 0.24103767 0.19040485 0.26491082 0.28330309 0.88989035
-   0.31728169 0.43517579 0.61896509 0.59541024]
-  [0.22358694 0.6981367  0.94958245 0.11869473 0.08313027 0.56091995
-   0.51354691 0.55852317 0.53468574 0.32732091]
-  [0.8672887  0.91177473 0.10278099 0.87221125 0.81242312 0.16018426
-   0.86479687 0.87490854 0.92227564 0.4925197 ]
-  [0.52475343 0.47585812 0.18457639 0.93776173 0.93863673 0.68215799
-   0.59516679 0.92226328 0.57787923 0.9779185 ]]
+ [1 1 1 1 1 1 1 1 1 1]
+ [0 1 0 1 0 1 1 1 1 1]
+ [1 1 1 1 1 1 0 1 1 1]
+ [0 0 0 0 1 1 1 1 0 1]
+ [0 1 0 0 0 1 1 1 1 0]
+ [1 1 1 1 1 1 1 1 1 1]
+ [1 1 1 0 1 1 1 1 1 1]]
+[[[0.38928921 0.69868644 0.51736359 0.59943792 0.7013833  0.59666631
+   0.9630201  0.38054459 0.96457041 0.42722946]
+  [0.72620863 0.74923878 0.26262196 0.5907855  0.75353696 0.89199113
+   0.1046121  0.56866039 0.72371593 0.65649769]
+  [0.49807196 0.43066631 0.01570896 0.27074824 0.93571824 0.07624665
+   0.98206555 0.60208663 0.72102721 0.23707928]
+  [0.17522655 0.45185969 0.5040025  0.64088373 0.45961542 0.23790301
+   0.49288561 0.32098233 0.84725502 0.41939847]
+  [0.4077339  0.89244872 0.34387147 0.75898075 0.44490642 0.70234971
+   0.70905003 0.25247288 0.28544909 0.49880633]
+  [0.34113651 0.9309151  0.22412821 0.85639919 0.25877051 0.11082167
+   0.19392063 0.13200666 0.39238365 0.46877785]
+  [0.5488275  0.86682841 0.87972213 0.30971378 0.66781247 0.20810034
+   0.56577991 0.66521007 0.44465706 0.60834457]
+  [0.91460699 0.30313407 0.44464216 0.6387703  0.00200105 0.25256899
+   0.19702077 0.50678724 0.43679979 0.64409322]
+  [0.6415661  0.57090913 0.02279872 0.79067293 0.69934139 0.24168333
+   0.53820324 0.54451422 0.84997121 0.23061506]
+  [0.25614046 0.63817061 0.25114937 0.62964467 0.95082993 0.0477426
+   0.14173618 0.23202012 0.21888936 0.28773165]]
 
- [[1.         0.         1.         1.         1.         1.
-   1.         1.         1.         0.        ]
-  [1.         1.         1.         1.         1.         0.
-   1.         1.         1.         0.        ]
-  [1.         0.         1.         0.         1.         1.
-   1.         1.         1.         1.        ]
-  [1.         1.         1.         1.         0.         1.
+ [[1.         0.         1.         1.         1.         0.
    1.         1.         0.         1.        ]
-  [1.         1.         1.         1.         1.         1.
-   1.         1.         1.         1.        ]
-  [1.         1.         1.         0.         1.         1.
-   0.         1.         1.         1.        ]
+  [1.         0.         1.         1.         1.         0.
+   0.         1.         0.         0.        ]
   [0.         1.         1.         1.         1.         1.
    1.         1.         1.         1.        ]
   [1.         1.         1.         1.         1.         1.
-   0.         1.         0.         1.        ]
-  [1.         1.         0.         1.         0.         1.
+   1.         1.         1.         1.        ]
+  [0.         1.         0.         1.         0.         1.
+   1.         1.         1.         1.        ]
+  [1.         1.         1.         1.         1.         1.
    0.         1.         1.         1.        ]
-  [0.         1.         1.         0.         1.         1.
-   0.         1.         0.         1.        ]]]</code></pre>
+  [0.         0.         0.         0.         1.         1.
+   1.         1.         0.         1.        ]
+  [0.         1.         0.         0.         0.         1.
+   1.         1.         1.         0.        ]
+  [1.         1.         1.         1.         1.         1.
+   1.         1.         1.         1.        ]
+  [1.         1.         1.         0.         1.         1.
+   1.         1.         1.         1.        ]]]</code></pre>
 </div>
 </div>
 

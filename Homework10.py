@@ -1,0 +1,68 @@
+# Script for Homework #10
+# 03/25/2026
+# Hannah Grace McNulty
+
+#######################################################
+
+import pandas as pd
+
+
+# Question 1
+
+mixed = [1, 2, True, "blue", 5] #extra list
+
+list = ["blue", "green", "red", 2, 5, 8, 11, 12, True, True, False, mixed]
+
+third_element = list[2]
+
+listWithinList = list[11][2]
+
+list.insert(0, "Hannah") # Inserts "Hannah" in the first position without overriding the currrent element.
+
+list.append(100) # Adds 100 to the end and changes the object within the original file, appending the data in the list.
+
+list.remove(11) # Removes the number 11 from the list.
+
+# Question 2
+
+md = {
+    "first":"Hannah",
+    "last":"McNulty",
+    "year":2026,
+    "status":"active",
+    "mood":"happy"
+}
+
+keys = md.keys()
+
+values = md.values()
+
+md["favcolor"] = "green" # Adds an element to the bottom of the existing dictionary.
+
+md.items() # Prints all pairs in a list (tuples)
+
+
+md["study"] = "plants" # add a new element
+
+del md["year"] # delete an element
+
+
+# Question 3
+
+import numpy as np
+from numpy import random
+
+arr1 = random.rand(100)
+
+arr1[-10:] # will return the last 10 elements
+
+arr1.astype(str) # convert to characters
+
+arr1.astype(float) # convert back to numeric
+
+arr2D = arr1.reshape(10,10) # convert to 2D array
+
+arr_bin = random.choice([0,1], p = [.2, .8], size = [10,10])
+
+
+stack = np.stack((arr2D, arr_bin))

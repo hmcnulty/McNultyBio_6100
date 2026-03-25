@@ -18,7 +18,7 @@
     "href": "index.html#homework-links",
     "title": "Hannah McNulty - Bio 6100",
     "section": "Homework Links",
-    "text": "Homework Links\nHomework 1\nHomework 2\nHomework 3\nHomework 4\nHomework 5\nHomework 6\nHomework 7\nHomework 8\nHomework 9"
+    "text": "Homework Links\nHomework 1\nHomework 2\nHomework 3\nHomework 4\nHomework 5\nHomework 6\nHomework 7\nHomework 8\nHomework 9\nHomework 10"
   },
   {
     "objectID": "Homework_02.html",
@@ -271,5 +271,33 @@
     "title": "Homework_09",
     "section": "Question 4",
     "text": "Question 4\n\n# Discrete X = Sampling Event\n# Discrete Y = Bee Caste\n\nbee_data &lt;- read.csv(\"/Users/hannahmcnulty/Documents/github/McNultyBio_6100/data/bees.csv\",header = T, sep=\",\")\n\n\n\nmosaicplot(~ sampling_event + bee_caste, data = bee_data, color = c(\"pink\", \"purple\", \"lightblue\"), main = \"Sampling Event and Bee Caste\", xlab = \"Sampling Event\", ylab = \"Bee Caste\")"
+  },
+  {
+    "objectID": "Homework_10.html",
+    "href": "Homework_10.html",
+    "title": "Homework_10",
+    "section": "",
+    "text": "import pandas as pd\nimport numpy as np\nfrom numpy import random"
+  },
+  {
+    "objectID": "Homework_10.html#question-1",
+    "href": "Homework_10.html#question-1",
+    "title": "Homework_10",
+    "section": "Question 1",
+    "text": "Question 1\n\nmixed = [1, 2, True, \"blue\", 5] #extra list\n\nlist = [\"blue\", \"green\", \"red\", 2, 5, 8, 11, 12, True, True, False, mixed]\n\nthird_element = list[2]\n\nlistWithinList = list[11][2]\n\nlist.insert(0, \"Hannah\") # Inserts \"Hannah\" in the first position without overriding the currrent element.\n\nlist.append(100) # Adds 100 to the end and changes the object within the original file, appending the data in the list.\n\nlist.remove(11) # Removes the number 11 from the list."
+  },
+  {
+    "objectID": "Homework_10.html#question-2",
+    "href": "Homework_10.html#question-2",
+    "title": "Homework_10",
+    "section": "Question 2",
+    "text": "Question 2\n\nmd = {\n    \"first\":\"Hannah\",\n    \"last\":\"McNulty\",\n    \"year\":2026,\n    \"status\":\"active\",\n    \"mood\":\"happy\"\n}\n\nkeys = md.keys()\n\nvalues = md.values()\n\nmd[\"favcolor\"] = \"green\" # Adds an element to the bottom of the existing dictionary.\n\nmd.items() # Prints all pairs in a list (tuples)\n\n\nmd[\"study\"] = \"plants\" # add a new element\n\ndel md[\"year\"] # delete an element"
+  },
+  {
+    "objectID": "Homework_10.html#question-3",
+    "href": "Homework_10.html#question-3",
+    "title": "Homework_10",
+    "section": "Question 3",
+    "text": "Question 3\n\narr1 = random.rand(100)\n\narr1[-10:] # will return the last 10 elements\n\narr1.astype(str) # convert to characters\n\narr1.astype(float) # convert back to numeric\n\narr2D = arr1.reshape(10,10) # convert to 2D array\n\narr_bin = random.choice([0,1], p = [.2, .8], size = [10,10])\n\n\nstack = np.stack((arr2D, arr_bin))"
   }
 ]

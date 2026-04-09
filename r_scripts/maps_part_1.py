@@ -156,3 +156,78 @@ fig = px.density_map(
     title="Global earthquake density"
 )
 fig.show()
+
+
+# increase radius
+fig = px.density_map(
+    eq,
+    lat="Latitude",
+    lon="Longitude",
+    z="Magnitude",
+    radius=20,
+    zoom=0,
+    center={"lat": 0, "lon": 180},
+    map_style="open-street-map",
+    title="Global earthquake density"
+)
+fig.show()
+
+fig.update_traces(opacity = 0.6)
+
+
+#focus on a region
+pacific = eq.query("Latitude > -60 and Latitude < 60 and Longitude > 100")
+
+fig = px.density_map(
+    pacific,
+    lat="Latitude",
+    lon="Longitude",
+    z="Magnitude",
+    radius=10,
+    zoom=0,
+    center={"lat": 0, "lon": 180},
+    map_style="carto-darkmatter",
+    title="Global earthquake density"
+)
+fig.show()
+
+
+fig = px.density_map(
+    pacific,
+    lat="Latitude",
+    lon="Longitude",
+    z="Magnitude",
+    radius=12,
+    zoom=2,
+    center={"lat": 10, "lon": 160},
+    map_style="carto-darkmatter",
+    title="Earthquake density in the Pacific"
+)
+fig.show()
+
+
+# Bubble map
+
+df = px.data.gapminder()
+
+fig = px.scatter_geo(
+    df,
+    locations = "iso_alpha",
+    color = "continent",
+    hover_name = "country",
+    size = "pop",
+    animation_frame = "year",
+    projection = "natural earth"
+)
+
+fig.show()
+
+
+from dash import Dash, dcc, html
+
+app = Dash()
+app.layout = html.Div([
+    dcc.Graph(figure = fig)
+])
+
+app.run(debug = True, use_reloader = False)

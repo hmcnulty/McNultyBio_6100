@@ -320,5 +320,68 @@
     "title": "Homework_12",
     "section": "Question 2",
     "text": "Question 2\n\nfig3 = px.scatter_geo(\n    gap,\n    locations = \"iso_alpha\",\n    color=\"continent\",\n    size = 'pop',\n    hover_name=\"country\",\n    hover_data = {\n        \"pop\": \":,\",\n        \"lifeExp\":\":1f\",\n        \"iso_alpha\" : False,\n        \"continent\": False\n    },\n    title = \"Country Population by Continent\"\n)\nfig3.show()\n\n\n\n# add labels\n\nfig4 = px.scatter_geo(\n    gap,\n    locations = \"iso_alpha\",\n    color=\"continent\",\n    size = 'pop',\n    hover_name=\"country\",\n    hover_data = {\n        \"pop\": \":,\",\n        \"lifeExp\":\":1f\",\n        \"iso_alpha\" : False,\n        \"continent\": False\n    },\n    title = \"Country Population by Continent\",\n    labels = {\n        \"lifeExp\": \"Life Expectancy\",\n        \"pop\": \"Population\"}\n)\nfig4.show()\n\n# I adjusted the labels using the labels argument.\n#  With this argument I changed lifeExp to Life \n# Expectancy and pop to Population for readability \n# and comprehension."
+  },
+  {
+    "objectID": "Homework_08.html",
+    "href": "Homework_08.html",
+    "title": "Homework_08",
+    "section": "",
+    "text": "counter &lt;- 0\n\nnum_0 &lt;- function(n = 1000){\n  \n  rb &lt;- rbinom(n, 1 , 0.5)\n\n  for (i in 1:n){\n   if(rb[i] == 0){\n        counter &lt;- counter + 1 # increase counter\n      }\n  }\n  return(counter)\n}\n\nnum_0()\n\n[1] 514"
+  },
+  {
+    "objectID": "Homework_08.html#question-1",
+    "href": "Homework_08.html#question-1",
+    "title": "Homework_08",
+    "section": "",
+    "text": "counter &lt;- 0\n\nnum_0 &lt;- function(n = 1000){\n  \n  rb &lt;- rbinom(n, 1 , 0.5)\n\n  for (i in 1:n){\n   if(rb[i] == 0){\n        counter &lt;- counter + 1 # increase counter\n      }\n  }\n  return(counter)\n}\n\nnum_0()\n\n[1] 514"
+  },
+  {
+    "objectID": "Homework_08.html#question-2",
+    "href": "Homework_08.html#question-2",
+    "title": "Homework_08",
+    "section": "Question 2",
+    "text": "Question 2\n\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nrb &lt;- rbinom(1000, 1 , 0.5) \nid &lt;- 1:1000\ndf &lt;- data.frame(rb, id)\n\nnrow &lt;- nrow(filter(df, rb == 0))\n\nnrow\n\n[1] 519"
+  },
+  {
+    "objectID": "Homework_08.html#question-3",
+    "href": "Homework_08.html#question-3",
+    "title": "Homework_08",
+    "section": "Question 3",
+    "text": "Question 3\n\ncreate_matrix &lt;- function(r=5, c=5){\n\n  stor_mat &lt;- matrix(, nrow = r, ncol = c)\n\n  for (i in 1:r){\n    for (j in 1:c){\n\n       stor_mat[i,j] &lt;- i*j\n    \n    }\n  }\n  return(stor_mat)\n}\n\ncreate_matrix()\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    2    3    4    5\n[2,]    2    4    6    8   10\n[3,]    3    6    9   12   15\n[4,]    4    8   12   16   20\n[5,]    5   10   15   20   25"
+  },
+  {
+    "objectID": "Homework_08.html#question-4",
+    "href": "Homework_08.html#question-4",
+    "title": "Homework_08",
+    "section": "Question 4",
+    "text": "Question 4"
+  },
+  {
+    "objectID": "Homework_08.html#a",
+    "href": "Homework_08.html#a",
+    "title": "Homework_08",
+    "section": "A",
+    "text": "A\n\nlibrary(ggplot2)\nset.seed(27)\n\n\ntrt_group &lt;- c(rep(\"Hannah\",5), rep(\"Bryan\",6), rep(\"Jackson\",4)) # define groups\n\nz &lt;- c(runif(4) + 1, runif(5) + 10, runif(6)+ 27) # define responses\n\ndf &lt;- data.frame(trt=trt_group,res=z) # make a dataframe\n\nobs &lt;- tapply(df$res,df$trt,mean)\nobs\n\n    Bryan    Hannah   Jackson \n15.903616  3.296177 27.741784 \n\n# create a simulated data set\ndf_sim &lt;- df # set up a new data frame\n\nrando &lt;- df_sim$res &lt;- sample(df_sim$res) # randomize assignment of response to treatment groups\nprint(rando)\n\n [1] 27.616095 27.738323 10.002450  1.971750 27.849618 27.502747  1.873870\n [8] 27.876448 10.137094 27.191909 10.401648 10.222276  1.083758 10.072499\n[15]  1.329231"
+  },
+  {
+    "objectID": "Homework_08.html#b",
+    "href": "Homework_08.html#b",
+    "title": "Homework_08",
+    "section": "B",
+    "text": "B\n\nshuffle_data &lt;- function(df_sim) {\n\n  df_sim$res &lt;- sample(df_sim$res)\n\n  means &lt;- tapply(df_sim$res, df_sim$trt, mean)\n\n  return(means)\n}\n\n\ndf2 &lt;- shuffle_data(df_sim)\ndf2\n\n   Bryan   Hannah  Jackson \n20.33257 10.25826 12.39574"
+  },
+  {
+    "objectID": "Homework_08.html#c",
+    "href": "Homework_08.html#c",
+    "title": "Homework_08",
+    "section": "C",
+    "text": "C\n\nn_reps   &lt;- 100\nresults  &lt;- data.frame(replicate = 1:n_reps, Bryan     = NA_real_, Hannah    = NA_real_, Jackson   = NA_real_)\n\nfor (i in 1:n_reps) {\n  means          &lt;- shuffle_data(df_sim)   \n  results$Bryan[i]   &lt;- means[\"Bryan\"]\n  results$Hannah[i]  &lt;- means[\"Hannah\"]\n  results$Jackson[i] &lt;- means[\"Jackson\"]\n}\n\nhead(results)\n\n  replicate    Bryan   Hannah   Jackson\n1         1 13.07823 17.21016 14.587391\n2         2 14.57305 10.33265 20.942052\n3         3 17.45925 17.22268  8.000209\n4         4 13.08225 20.61150 10.329681\n5         5 13.04899 15.44603 16.836412\n6         6 18.89910 10.25529 14.549674"
+  },
+  {
+    "objectID": "Homework_08.html#d",
+    "href": "Homework_08.html#d",
+    "title": "Homework_08",
+    "section": "D",
+    "text": "D\n\nhannah &lt;- ggplot(results, aes(x = Hannah)) +\n  geom_histogram(bins = 20) +\n  labs(\n    x = \"Mean\",\n    y = \"Count\",\n    title = \"Hannah means\"\n  )\nhannah\n\n\n\n\n\n\n\nbryan &lt;- ggplot(results, aes(x = Bryan)) +\n  geom_histogram(bins = 20) +\n  labs(\n    x = \"Mean\",\n    y = \"Count\",\n    title = \"Bryan means\"\n  )\nbryan\n\n\n\n\n\n\n\njackson &lt;- ggplot(results, aes(x = Jackson)) +\n  geom_histogram(bins = 20) +\n  labs(\n    x = \"Mean\",\n    y = \"Count\",\n    title = \"Jackson means\"\n  )\njackson"
   }
 ]

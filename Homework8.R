@@ -102,28 +102,19 @@ print(rando)
 # Write a custom function that 1) reshuffles the response variable, and 2) calculates the mean of each group in the reshuffled data. 
 # Store the means in a vector of length 3.
 
-sim <- tapply(df_sim$res,df$trt,mean)
-print(sim)
 
+shuffle_data <- function(df_sim) {
 
+  df_sim$res <- sample(df_sim$res)
 
-shuffle_data <- function() {
+  means <- tapply(df_sim$res, df_sim$trt, mean)
 
-  df_sim <- randodf_sim
-  
-  shuffle <- df_sim$res <- sample(df_sim$res) 
-
-  means <- sim <- tapply(df_sim$res,df_sim$trt,mean)
-  
-  final_vector <- c(shuffle, means)
-
-return(final_vector)
+  return(means)
 }
-df2 <- shuffle_data()
+
+
+df2 <- shuffle_data(df_sim)
 df2
-
-
-
 
 
 
@@ -135,10 +126,62 @@ df2
 # Store the results in a data frame that has 1 column indicating 
 # the replicate number and 1 column for each new group mean, for a total of 4 columns.
 
+n_reps   <- 100
+results  <- data.frame(replicate = 1:n_reps, Bryan     = NA_real_, Hannah    = NA_real_, Jackson   = NA_real_)
+
+for (i in 1:n_reps) {
+  means          <- shuffle_data(df_sim)   
+  results$Bryan[i]   <- means["Bryan"]
+  results$Hannah[i]  <- means["Hannah"]
+  results$Jackson[i] <- means["Jackson"]
+}
+
+head(results)
+
+
+
 # D
 # Use qplot() to create a histogram of the means for each reshuffled group. 
 # Or, if you want a challenge, use ggplot() to overlay all 3 histograms in the same figure. 
 # How do the distributions of reshuffled means compare to the original means?
+
+
+hannah <- ggplot(results, aes(x = Hannah)) +
+  geom_histogram(bins = 20) +
+  labs(
+    x = "Mean",
+    y = "Count",
+    title = "Hannah means"
+  )
+
+hannah
+
+
+
+
+bryan <- ggplot(results, aes(x = Bryan)) +
+  geom_histogram(bins = 20) +
+  labs(
+    x = "Mean",
+    y = "Count",
+    title = "Bryan means"
+  )
+
+bryan
+
+
+
+jackson <- ggplot(results, aes(x = Jackson)) +
+  geom_histogram(bins = 20) +
+  labs(
+    x = "Mean",
+    y = "Count",
+    title = "Jackson means"
+  )
+
+jackson
+
+
 
 
 

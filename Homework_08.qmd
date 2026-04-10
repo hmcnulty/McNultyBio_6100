@@ -3,3 +3,154 @@ title: "Homework_08"
 format: html
 ---
 
+## Question 1
+
+```{r}
+counter <- 0
+
+num_0 <- function(n = 1000){
+  
+  rb <- rbinom(n, 1 , 0.5)
+
+  for (i in 1:n){
+   if(rb[i] == 0){
+        counter <- counter + 1 # increase counter
+      }
+  }
+  return(counter)
+}
+
+num_0()
+
+```
+
+## Question 2
+
+```{r}
+library(dplyr)
+
+rb <- rbinom(1000, 1 , 0.5) 
+id <- 1:1000
+df <- data.frame(rb, id)
+
+nrow <- nrow(filter(df, rb == 0))
+
+nrow
+```
+
+
+## Question 3
+
+```{r}
+create_matrix <- function(r=5, c=5){
+
+  stor_mat <- matrix(, nrow = r, ncol = c)
+
+  for (i in 1:r){
+    for (j in 1:c){
+
+       stor_mat[i,j] <- i*j
+    
+    }
+  }
+  return(stor_mat)
+}
+
+create_matrix()
+```
+
+## Question 4
+
+
+## A
+
+```{r}
+library(ggplot2)
+set.seed(27)
+
+
+trt_group <- c(rep("Hannah",5), rep("Bryan",6), rep("Jackson",4)) # define groups
+
+z <- c(runif(4) + 1, runif(5) + 10, runif(6)+ 27) # define responses
+
+df <- data.frame(trt=trt_group,res=z) # make a dataframe
+
+obs <- tapply(df$res,df$trt,mean)
+obs
+
+
+# create a simulated data set
+df_sim <- df # set up a new data frame
+
+rando <- df_sim$res <- sample(df_sim$res) # randomize assignment of response to treatment groups
+print(rando)
+```
+
+
+## B
+
+```{r}
+shuffle_data <- function(df_sim) {
+
+  df_sim$res <- sample(df_sim$res)
+
+  means <- tapply(df_sim$res, df_sim$trt, mean)
+
+  return(means)
+}
+
+
+df2 <- shuffle_data(df_sim)
+df2
+
+```
+
+## C
+
+```{r}
+n_reps   <- 100
+results  <- data.frame(replicate = 1:n_reps, Bryan     = NA_real_, Hannah    = NA_real_, Jackson   = NA_real_)
+
+for (i in 1:n_reps) {
+  means          <- shuffle_data(df_sim)   
+  results$Bryan[i]   <- means["Bryan"]
+  results$Hannah[i]  <- means["Hannah"]
+  results$Jackson[i] <- means["Jackson"]
+}
+
+head(results)
+```
+
+
+## D
+
+```{r}
+hannah <- ggplot(results, aes(x = Hannah)) +
+  geom_histogram(bins = 20) +
+  labs(
+    x = "Mean",
+    y = "Count",
+    title = "Hannah means"
+  )
+hannah
+
+
+bryan <- ggplot(results, aes(x = Bryan)) +
+  geom_histogram(bins = 20) +
+  labs(
+    x = "Mean",
+    y = "Count",
+    title = "Bryan means"
+  )
+bryan
+
+
+jackson <- ggplot(results, aes(x = Jackson)) +
+  geom_histogram(bins = 20) +
+  labs(
+    x = "Mean",
+    y = "Count",
+    title = "Jackson means"
+  )
+jackson
+```

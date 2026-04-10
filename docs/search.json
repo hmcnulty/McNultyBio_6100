@@ -389,14 +389,14 @@
     "href": "ca_sir_driver.html",
     "title": "Homework 11: Structured Programming and CA Models”",
     "section": "",
-    "text": "This repository contains this .qmd file, which has the github repository link and driver. Also, it contains a functions folder with draw.py, init.py, mouse.py, and update.py script files to run the model.\nhttps://github.com/hmcnulty/CA_SIR_6100"
+    "text": "This repository contains this .qmd file, which has the github repository link and driver. Also, it contains a functions folder with draw.py, init.py, mouse.py, and update.py script files to run the model.\nhttps://github.com/hmcnulty/CA_SIR_6100\nPygame does not yet work with python 3.14, which is what I have my current environment running in. The code works when I have it in a different environment with an older python version, which is in my other CA_SIR_6100 repository. I commented all the lines of code in this html so that it will upload."
   },
   {
     "objectID": "ca_sir_driver.html#section-1",
     "href": "ca_sir_driver.html#section-1",
     "title": "Homework 11: Structured Programming and CA Models”",
     "section": "",
-    "text": "This repository contains this .qmd file, which has the github repository link and driver. Also, it contains a functions folder with draw.py, init.py, mouse.py, and update.py script files to run the model.\nhttps://github.com/hmcnulty/CA_SIR_6100"
+    "text": "This repository contains this .qmd file, which has the github repository link and driver. Also, it contains a functions folder with draw.py, init.py, mouse.py, and update.py script files to run the model.\nhttps://github.com/hmcnulty/CA_SIR_6100\nPygame does not yet work with python 3.14, which is what I have my current environment running in. The code works when I have it in a different environment with an older python version, which is in my other CA_SIR_6100 repository. I commented all the lines of code in this html so that it will upload."
   },
   {
     "objectID": "ca_sir_driver.html#section-2",

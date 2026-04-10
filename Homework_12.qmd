@@ -1,0 +1,130 @@
+---
+title: "Homework_12"
+format: html
+---
+
+
+
+## Question 1 
+
+
+```{python}
+import json
+import pandas as pd 
+import plotly.express as px
+import plotly.graph_objects as go 
+
+# data download
+gap = px.data.gapminder().query("year==2007")
+
+# filter
+europe = gap.query("continent == 'Europe'")
+
+
+
+fig = px.choropleth( 
+    europe,
+    locations = "iso_alpha",
+    color = "gdpPercap",
+    hover_name = "country",
+    hover_data = {
+        "gdpPercap": ":,.0f",
+        "pop": ":,",
+        "iso_alpha" : False
+    },
+    color_continuous_scale = "Viridis", 
+    title = "Europe 2007 - GDP per capita and Population by country"
+)
+fig.show()
+
+# smaller map to only show europe
+fig.update_geos( 
+    scope = "europe",
+    showland = True,
+    landcolor = "rgb(240,240,240)"
+
+)
+fig.show()
+
+
+# add projection - Natural Earth
+
+fig2 = px.choropleth( 
+    europe,
+    locations = "iso_alpha",
+    color = "gdpPercap",
+    hover_name = "country",
+    hover_data = {
+        "gdpPercap": ":,.0f",
+        "pop": ":,",
+        "iso_alpha" : False
+    },
+    color_continuous_scale = "Viridis", 
+    projection = "natural earth",
+    title = "Europe 2007 - GDP per capita and Population by country"
+)
+
+fig2.update_geos(
+    scope = "europe",
+    showland = True,
+    landcolor = "rgb(240,240,240)"
+    
+)
+fig2.show()
+
+# I added the natural earth projection using the projection
+#  = "natural earth" argument. This projection allows for 
+# the countries to be larger and occupy a much more 
+# familiar shape than the default projection that was applied. 
+
+```
+
+
+## Question 2
+
+
+```{python}
+fig3 = px.scatter_geo(
+    gap,
+    locations = "iso_alpha",
+    color="continent",
+    size = 'pop',
+    hover_name="country",
+    hover_data = {
+        "pop": ":,",
+        "lifeExp":":1f",
+        "iso_alpha" : False,
+        "continent": False
+    },
+    title = "Country Population by Continent"
+)
+fig3.show()
+
+
+
+# add labels
+
+fig4 = px.scatter_geo(
+    gap,
+    locations = "iso_alpha",
+    color="continent",
+    size = 'pop',
+    hover_name="country",
+    hover_data = {
+        "pop": ":,",
+        "lifeExp":":1f",
+        "iso_alpha" : False,
+        "continent": False
+    },
+    title = "Country Population by Continent",
+    labels = {
+        "lifeExp": "Life Expectancy",
+        "pop": "Population"}
+)
+fig4.show()
+
+# I adjusted the labels using the labels argument.
+#  With this argument I changed lifeExp to Life 
+# Expectancy and pop to Population for readability 
+# and comprehension. 
+```

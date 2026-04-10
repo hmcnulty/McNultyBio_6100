@@ -9,6 +9,7 @@ This repository contains this .qmd file, which has the github repository link an
 
 https://github.com/hmcnulty/CA_SIR_6100
 
+Pygame does not yet work with python 3.14, which is what I have my current environment running in. The code works when I have it in a different environment with an older python version, which is in my other CA_SIR_6100 repository. I commented all the lines of code in this html so that it will upload.
 
 
 ## Section 2
@@ -20,31 +21,31 @@ https://github.com/hmcnulty/CA_SIR_6100
 
 
 # import libraries
-import pygame
-import numpy as np
-import matplotlib.pyplot as plt
+# import pygame
+# import numpy as np
+# import matplotlib.pyplot as plt
 
 # import functions here....
-from functions.draw import draw
-from functions.init import init_grid
-from functions.mouse import mouse_to_cell
-from functions.update import update_sir
+# from functions.draw import draw
+# from functions.init import init_grid
+# from functions.mouse import mouse_to_cell
+# from functions.update import update_sir
 
 
 # States
-S = 0
-I = 1
-R = 2
+# S = 0
+# I = 1
+# R = 2
 
 # Colors
-col_S = (50, 100, 255)
-col_I = (255, 50, 50)
-col_R = (50, 255, 50)
-col_grid = (30, 30, 60)
+# col_S = (50, 100, 255)
+# col_I = (255, 50, 50)
+# col_R = (50, 255, 50)
+# col_grid = (30, 30, 60)
 
 # Params
-beta = 0.05   # infection probability
-gamma = 0.05 # recovery probability
+# beta = 0.05   # infection probability
+# gamma = 0.05 # recovery probability
 
 
 
@@ -54,7 +55,7 @@ gamma = 0.05 # recovery probability
 
 ########################################################################################################################
 # BEGIN FUNCTION
-def main(dimx, dimy, cellsize, S = S, I = I, R = R, beta = beta, gamma = gamma, col_S = col_S, col_I = col_I, col_R = col_R, col_grid = col_grid):
+# def main(dimx, dimy, cellsize, S = S, I = I, R = R, beta = beta, gamma = gamma, col_S = col_S, col_I = col_I, col_R = col_R, col_grid = col_grid):
 
     # PURPOSE: Run all helper functions, control keyboard commands and plot SIR curves.
     # INPUTS: Inputs to pass to other helper functions:
@@ -70,95 +71,95 @@ def main(dimx, dimy, cellsize, S = S, I = I, R = R, beta = beta, gamma = gamma, 
         # S-Key: progress through simulation step-by-step while paused
         # Esc: stop simulation and return SIR curves as a figure
 
-    pygame.init()
-    surface = pygame.display.set_mode((dimx * cellsize, dimy * cellsize))
-    pygame.display.set_caption("Agent-Based SIR Model")
+#     pygame.init()
+#     surface = pygame.display.set_mode((dimx * cellsize, dimy * cellsize))
+#     pygame.display.set_caption("Agent-Based SIR Model")
 
-    clock = pygame.time.Clock()
+#     clock = pygame.time.Clock()
 
-    grid = init_grid(dimx, dimy)
+#     grid = init_grid(dimx, dimy)
 
-    running = False
-    step = False
-    done = False
+#     running = False
+#     step = False
+#     done = False
 
-    # --- epidemic history ---
-    S_hist = []
-    I_hist = []
-    R_hist = []
+#     # --- epidemic history ---
+#     S_hist = []
+#     I_hist = []
+#     R_hist = []
 
-    while not done:
+#     while not done:
 
-        for event in pygame.event.get():
+#         for event in pygame.event.get():
 
-            if event.type == pygame.QUIT:
-                done = True
+#             if event.type == pygame.QUIT:
+#                 done = True
 
-            if event.type == pygame.KEYDOWN:
+#             if event.type == pygame.KEYDOWN:
 
-                if event.key == pygame.K_ESCAPE:
-                    done = True
+#                 if event.key == pygame.K_ESCAPE:
+#                     done = True
 
-                if event.key == pygame.K_SPACE:
-                    running = not running
+#                 if event.key == pygame.K_SPACE:
+#                     running = not running
 
-                if event.key == pygame.K_s:
-                    step = True
+#                 if event.key == pygame.K_s:
+#                     step = True
 
-                if event.key == pygame.K_c:
-                    grid = init_grid(dimx, dimy)
+#                 if event.key == pygame.K_c:
+#                     grid = init_grid(dimx, dimy)
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
+#             if event.type == pygame.MOUSEBUTTONDOWN:
 
-                row, col = mouse_to_cell(event.pos, cellsize)
+#                 row, col = mouse_to_cell(event.pos, cellsize)
 
-                if event.button == 1:   # left click → infect
-                    if grid[row, col] == S:
-                        grid[row, col] = I
+#                 if event.button == 1:   # left click → infect
+#                     if grid[row, col] == S:
+#                         grid[row, col] = I
 
-                elif event.button == 3: # right click → recover
-                    grid[row, col] = R
+#                 elif event.button == 3: # right click → recover
+#                     grid[row, col] = R
 
-        surface.fill(col_grid)
+#         surface.fill(col_grid)
 
-        if running or step:
+#         if running or step:
 
-            grid = update_sir(grid, beta, gamma, S = S, I = I, R = R)
-            step = False
+#             grid = update_sir(grid, beta, gamma, S = S, I = I, R = R)
+#             step = False
 
-            total = grid.size
-            S_hist.append(np.sum(grid == S) / total)
-            I_hist.append(np.sum(grid == I) / total)
-            R_hist.append(np.sum(grid == R) / total)
+#             total = grid.size
+#             S_hist.append(np.sum(grid == S) / total)
+#             I_hist.append(np.sum(grid == I) / total)
+#             R_hist.append(np.sum(grid == R) / total)
 
-        draw(surface, grid, cellsize, S=S, I=I, R=R, col_S=col_S, col_I=col_I, col_R=col_R)
+#         draw(surface, grid, cellsize, S=S, I=I, R=R, col_S=col_S, col_I=col_I, col_R=col_R)
 
-        pygame.display.update()
-        clock.tick(20)
+#         pygame.display.update()
+#         clock.tick(20)
 
-    pygame.quit()
-    pygame.display.quit()
+#     pygame.quit()
+#     pygame.display.quit()
 
-    # --- Plot epidemic curves ---
-    t = range(len(S_hist))
+#     # --- Plot epidemic curves ---
+#     t = range(len(S_hist))
 
-    plt.figure()
+#     plt.figure()
 
-    plt.plot(t, S_hist, color=np.array(col_S)/255, label="Susceptible")
-    plt.plot(t, I_hist, color=np.array(col_I)/255, label="Infected")
-    plt.plot(t, R_hist, color=np.array(col_R)/255, label="Recovered")
+#     plt.plot(t, S_hist, color=np.array(col_S)/255, label="Susceptible")
+#     plt.plot(t, I_hist, color=np.array(col_I)/255, label="Infected")
+#     plt.plot(t, R_hist, color=np.array(col_R)/255, label="Recovered")
 
-    plt.xlabel("Time Step")
-    plt.ylabel("Proportion of Population")
-    plt.title("Agent-Based SIR Dynamics")
+#     plt.xlabel("Time Step")
+#     plt.ylabel("Proportion of Population")
+#     plt.title("Agent-Based SIR Dynamics")
 
-    plt.legend()
-    plt.show()
-############################################################################################################
+#     plt.legend()
+#     plt.show()
+# ############################################################################################################
 # FUNCTION END
 
 
-# run main function here...
-if __name__ == "__main__":
-    main(100, 70, 8)
+#  run main function here...
+# if __name__ == "__main__":
+#     main(100, 70, 8)
 ```

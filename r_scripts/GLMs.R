@@ -70,3 +70,65 @@ summary(m_cat_cat)
 
 
 
+# testing for significance
+# using the car(companion of applied regression) package
+
+# build some models
+bin_mod <- glm(data = bee_dat, DWV_pathogen_binary ~ bombus_spp * sampling_event + host_plant, family = binomial(link =))
+
+gaus_mod <- lm(data = bee_dat, log10_Nosema_load ~ sampling_event * host_plant)
+
+summary(bin_mod)
+summary(gaus_mod)
+
+
+# using the car package for significance
+Anova(bin_mod)
+Anova(gaus_mod)
+
+#liklihood ratio test
+m_dwv_null <- lm(data = df_filtered, log10_DWV_load ~ 1) # null model
+m_dwv_full <- lm(data = df_filtered, log10_DWV_load ~ sampling_event + host_plant) # model of interest
+
+anova(m_dwv_null, m_dwv_full, test = "LRT") # run an anova between the models comparing them
+
+# Likelihood ratio test: full vs reduced model
+m_dwv_reduced <- lm(data = df_filtered, log10_DWV_load ~ sampling_event) #take out host plant
+#comparing full model to reduced model = host plant plays a significant role in the model)
+
+anova(m_dwv_reduced, m_dwv_full, test = "LRT")
+
+
+
+# random effects and nesting
+# ranom effects
+g_bqcv_site <- lmer(
+  log10_BQCV_load ~ bombus_spp + sampling_event + (1 | site_code),
+  data = df_filtered)
+
+Anova(g_bqcv_site)
+
+# nested random effects
+g_bqcv_site <- lmer(
+  log10_BQCV_load ~ bombus_spp + (1 | site_code/sampling_event),
+  data = df_filtered)
+
+Anova(g_bqcv_site)
+
+
+# gamma mixed model effects
+
+# make pos only nosema
+nosPos <- bee_dat[bee_dat$Nosema_pathogen_load > 0,]
+
+# gamma
+nos_gamma <- glmer(
+  Nosema_pathogen_load ~ site_code + bombus_spp + (1 | sampling_event),
+  data = nosPos, family = Gamma)
+Anova(nos_gamma)
+
+# log
+nos_log <- lmer(
+  log10_Nosema_load ~ site_code + bombus_spp + (1 | sampling_event),
+  data = nosPos)
+Anova(nos_log)

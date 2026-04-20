@@ -42,7 +42,7 @@ q1
 # Continuous Y = Petal Width
 
 q2 <- iris %>% ggplot(aes(x = Species, y = Petal.Length)) +
-  geom_boxplot(fill = "pink") +
+  geom_boxplot(fill = "green") +
   geom_jitter() + 
   labs(
     x = "Species Type",

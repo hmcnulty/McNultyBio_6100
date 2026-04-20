@@ -256,7 +256,7 @@
     "href": "Homework_09.html#question-2",
     "title": "Homework_09",
     "section": "Question 2",
-    "text": "Question 2\n\n# Discrete X = Species\n# Continuous Y = Petal Width\n\nq2 &lt;- iris %&gt;% ggplot(aes(x = Species, y = Petal.Length)) +\n  geom_boxplot(fill = \"pink\") +\n  geom_jitter() + \n  labs(\n    x = \"Species Type\",\n    y = \"Petal Length (cm)\") +\n  theme_classic() +\n  scale_y_continuous(limits = c(0,8), expand = c(0.02,0.02))\n\nq2"
+    "text": "Question 2\n\n# Discrete X = Species\n# Continuous Y = Petal Width\n\nq2 &lt;- iris %&gt;% ggplot(aes(x = Species, y = Petal.Length)) +\n  geom_boxplot(fill = \"green\") +\n  geom_jitter() + \n  labs(\n    x = \"Species Type\",\n    y = \"Petal Length (cm)\") +\n  theme_classic() +\n  scale_y_continuous(limits = c(0,8), expand = c(0.02,0.02))\n\nq2"
   },
   {
     "objectID": "Homework_09.html#question-3",

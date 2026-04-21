@@ -27,8 +27,8 @@ q1 <- iris %>% ggplot(aes(x = Petal.Length, y = Petal.Width)) +
 # Question 2
 
 q2 <- iris %>% ggplot(aes(x = Species, y = Petal.Length)) +
-  geom_boxplot(fill = "pink") +
-  geom_jitter() + 
+  geom_boxplot(fill = "green") +
+  #geom_jitter() + 
   labs(
     x = "Species Type",
     y = "Petal Length (cm)") +

@@ -48,3 +48,9 @@ This webpage is for the homework of Computational Biology 6100.
 
 
 [Homework 12](Homework_12.html)
+
+
+[Homework 13](Homework_13.html)
+
+
+[Homework 14](Homework_14.html)

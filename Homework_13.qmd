@@ -50,7 +50,6 @@ ssc_clean %>%
     y = "Mean Sap Sugar Concentration") + 
   theme_classic() +
   scale_y_continuous(limits = c(1,3), expand = c(0.02,0.02)) +
-  #scale_x_continuous(limits = c(0,100), expand = c(0.02,0.02))
   scale_color_discrete(labels = c("Gravity", "Vacuum", "Sugar Control"))
 
 
@@ -78,7 +77,7 @@ ssc_event3 <- ssc2 %>%
 table(ssc_event3$high_ssc)
 
 
-ssc_glmm <- glmer(high_ssc ~ treatment_num + dbh,
+ssc_glmm <- glm(high_ssc ~ treatment_num + dbh,
                  data = ssc_event3,
                  family = binomial)
 
@@ -91,7 +90,7 @@ ssc_event3 %>%
   ggplot(aes(x = dbh, 
             y = high_ssc,
           color = treatment_num)) +
-  geom_smooth() +
+  geom_smooth(method = "glm") +
   labs(
     x = "Tree Diameter (DBH)",
     y = "Probability of High Sugar (>2 °Brix)",
